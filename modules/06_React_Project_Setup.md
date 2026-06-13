@@ -1,23 +1,23 @@
-# Module 6: Frontend Environment Setup
+# React Project Setup — ShopSense AI
 
 ## Overview
-This module documents the complete setup of the frontend development environment for ShopSense AI from scratch.
+This document covers the complete setup of the React frontend development environment for ShopSense AI from scratch on Windows using VS Code.
 
 ---
 
 ## System Requirements
 
-| Tool | Version Used | Purpose |
-|------|-------------|---------|
+| Tool | Version | Purpose |
+|------|---------|---------|
 | Node.js | v24.14.0 | JavaScript runtime |
 | npm | v11.9.0 | Package manager |
 | VS Code | Latest | Code editor |
-| Chrome Browser | Latest | Development + Voice API testing |
+| Chrome Browser | Latest | Development + Voice API |
 | Git | Latest | Version control |
 
 ---
 
-## Step-by-Step Setup
+## Project Creation
 
 ### Step 1: Create Project with Vite
 ```bash
@@ -28,12 +28,16 @@ npm install
 npm run dev
 ```
 
+App runs at: `http://localhost:5173`
+
+---
+
 ### Step 2: Install Tailwind CSS
 ```bash
 npm install tailwindcss @tailwindcss/vite
 ```
 
-Updated vite.config.js:
+**vite.config.js:**
 ```js
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
@@ -44,23 +48,29 @@ export default defineConfig({
 })
 ```
 
-Added to index.css:
+**src/index.css:**
 ```css
 @import "tailwindcss";
 ```
+
+---
 
 ### Step 3: Install React Router DOM
 ```bash
 npm install react-router-dom
 ```
 
+---
+
 ### Step 4: Install Firebase
 ```bash
 npm install firebase
 ```
 
-### Step 5: Create Environment Variables
-Created .env file:
+---
+
+### Step 5: Environment Variables
+**.env file:**
 ```
 VITE_GEMINI_API_KEY=your_gemini_api_key
 VITE_FIREBASE_API_KEY=your_firebase_api_key
@@ -73,7 +83,7 @@ VITE_FIREBASE_APP_ID=your_app_id
 
 ---
 
-## Folder Structure Created
+## Folder Structure
 
 ```
 shopsense-ai/
@@ -100,37 +110,48 @@ shopsense-ai/
 
 ---
 
-## Dependencies Installed
+## Dependencies
 
-| Package | Version | Purpose |
-|---------|---------|---------|
-| react | ^18.0.0 | UI Framework |
-| react-dom | ^18.0.0 | DOM rendering |
-| react-router-dom | ^6.0.0 | Page routing |
-| firebase | ^10.0.0 | Database & Auth |
-| tailwindcss | ^4.0.0 | CSS styling |
-| @tailwindcss/vite | ^4.0.0 | Tailwind Vite plugin |
-| vite | ^5.0.0 | Build tool |
-
----
-
-## Firebase Setup
-
-1. Created project at console.firebase.google.com
-2. Selected Spark Plan (free)
-3. Enabled Firestore Database (Mumbai region — asia-south1)
-4. Enabled Email/Password Authentication
-5. Registered web app and copied firebaseConfig
+| Package | Purpose |
+|---------|---------|
+| react | UI Framework |
+| react-dom | DOM rendering |
+| react-router-dom | Page routing |
+| firebase | Database and Auth |
+| tailwindcss | CSS styling |
+| @tailwindcss/vite | Tailwind Vite plugin |
+| vite | Build tool |
 
 ---
 
-## Development Server
+## Firebase Configuration
 
-```bash
-npm run dev
-# Runs at http://localhost:5173
+**src/firebase.js:**
+```js
+import { initializeApp } from 'firebase/app'
+import { getFirestore } from 'firebase/firestore'
+import { getAuth } from 'firebase/auth'
+
+const firebaseConfig = {
+  apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
+  authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
+  projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
+  storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_ID,
+  appId: import.meta.env.VITE_FIREBASE_APP_ID
+}
+
+const app = initializeApp(firebaseConfig)
+export const db = getFirestore(app)
+export const auth = getAuth(app)
 ```
 
 ---
 
-## Status: Completed
+## Firebase Setup Steps
+
+1. Created project at console.firebase.google.com
+2. Selected Spark Plan (free — no cost)
+3. Enabled Firestore Database (Mumbai region — asia-south1)
+4. Enabled Email/Password Authentication
+5. Registered web app and copied firebaseConfig values to .env

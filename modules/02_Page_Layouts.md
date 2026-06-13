@@ -1,7 +1,7 @@
-# Module 2: UI Wireframe Design
+# Page Layouts — ShopSense AI
 
 ## Overview
-This module contains the blueprint layout of all 5 pages in ShopSense AI before actual coding began. Wireframes define the structure, components, and layout of each page.
+This document contains the blueprint layout of all 5 pages in ShopSense AI. Page layouts define the structure, components, and arrangement of each screen.
 
 ---
 
@@ -130,8 +130,4 @@ This module contains the blueprint layout of all 5 pages in ShopSense AI before 
 ## Tools Used
 - React.js for component-based UI
 - Tailwind CSS for styling
-- Figma-style ASCII wireframes for planning
-
----
-
-## Status: Completed
+- React Router DOM for page navigation

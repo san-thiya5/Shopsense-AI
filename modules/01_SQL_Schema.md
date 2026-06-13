@@ -1,7 +1,7 @@
-# Module 1: Database Schema Creation
+# SQL Schema — ShopSense AI
 
 ## Overview
-This module defines the complete database structure for ShopSense AI using Firebase Firestore — a real-time NoSQL cloud database.
+This document defines the complete database structure for ShopSense AI using Firebase Firestore — a real-time NoSQL cloud database.
 
 ---
 
@@ -62,7 +62,3 @@ This module defines the complete database structure for ShopSense AI using Fireb
 - Firebase Firestore (NoSQL Database)
 - Firebase SDK v9
 - React.js for frontend integration
-
----
-
-## Status: Completed
